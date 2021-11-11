@@ -3,21 +3,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BallMovement : MonoBehaviour
 {
-    
     [SerializeField, Range(1, 10)] private float force = 10f;
 
     [SerializeField, Tooltip("Hur långt man kan dra i bollen"), Range(1, 5)]
     private float maxForceDragDistance = 3f;
-    
+
     //fuck this scuffed shit
     [SerializeField, Range(0f, 100f)] private float speed = 10f;
-    
+
     private Rigidbody2D body;
     private Camera cam;
-    
+
     private Vector2 dragDir;
     private Vector2 startPoint;
-    
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -33,12 +32,30 @@ public class BallMovement : MonoBehaviour
             body.velocity += Vector2.left * speed;
         if (Input.GetKeyDown(KeyCode.D))
             body.velocity -= Vector2.left * speed;
+        /*
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                Ray ray = cam.ScreenPointToRay(touch.position);
+                    
+                startPoint = transform.position;
+                dragDir = startPoint - (Vector2) cam.ScreenToWorldPoint(Input.mousePosition);
+            }
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                Todo lets goooo                
+            }
+        }
+         */
     }
-    
+
     private void OnMouseOver()
     {
         //UI grejer?? typ highlight etc
     }
+
 
     private void OnMouseDrag()
     {
@@ -59,7 +76,7 @@ public class BallMovement : MonoBehaviour
         body.AddForce(dragDir * force, ForceMode2D.Impulse);
         startPoint = Vector2.zero;
     }
-    
+
     private void OnDrawGizmos()
     {
         if (cam != null && startPoint != Vector2.zero)
