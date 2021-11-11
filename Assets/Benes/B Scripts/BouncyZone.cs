@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -38,6 +39,12 @@ public class BouncyZone : MonoBehaviour
 
         velocity.y = speed;
         body.velocity = transform.TransformDirection(velocity);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Handles.color = Color.magenta;
+        Handles.DrawLine(transform.position, transform.position + transform.up, 5f);
     }
 }
 

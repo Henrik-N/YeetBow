@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -41,8 +42,9 @@ public class AccelerationZone : MonoBehaviour
         body.velocity = velocity;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, (transform.position + transform.right * Mathf.Clamp(speed, -2, 2)));
+        Handles.color = Color.yellow;
+        Handles.DrawLine(transform.position, (transform.position + transform.right * Mathf.Clamp(speed, -2, 2)), 5f);
     }
 }
