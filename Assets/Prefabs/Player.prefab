@@ -168,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSlowTime: 0.5
   timeCooldown: 1
+  timeYouCanSlow: 5
+  minSlowmotionSpeed: 0.3
+  timebar: {fileID: 0}
 --- !u!1 &6748701536766726160
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +182,7 @@ GameObject:
   - component: {fileID: 6748701536766726165}
   - component: {fileID: 6748701536766726166}
   - component: {fileID: 6748701536766726167}
+  - component: {fileID: 3761071171483782777}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -251,3 +255,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6748701536766726160}
   m_Enabled: 1
+--- !u!114 &3761071171483782777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748701536766726160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b6b646791304947942ec0d2a905b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeMagnitude: 0.3
+  dampingSpeed: 1
