@@ -5,7 +5,6 @@ using UnityEngine;
 public class DamageZone : MonoBehaviour
 {
     private BoxCollider2D box;
-    public AudioClip clip;
 
     [SerializeField, Tooltip("Dmg lmao"), Range(1f, 30f)]
     private int damage = 10;
@@ -19,11 +18,9 @@ public class DamageZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) 
-            return;
-
-        other.gameObject.GetComponent<BallHealthComp>().TakeDamage(damage);
-        other.gameObject.GetComponentInChildren<CameraShake>().TriggerShake();
-        SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<BallHealthComp>().TakeDamage(damage);
+        }
     }
 }
