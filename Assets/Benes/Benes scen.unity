@@ -387,6 +387,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4639459691994723813, guid: ff77327ce03ce554c9f99b7af679303b, type: 3}
+      propertyPath: screenShakeTime
+      value: 0.259
+      objectReference: {fileID: 0}
     - target: {fileID: 4975578741537199637, guid: ff77327ce03ce554c9f99b7af679303b, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -397,11 +401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7606358609394992683, guid: ff77327ce03ce554c9f99b7af679303b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 392
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7606358609394992683, guid: ff77327ce03ce554c9f99b7af679303b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 276.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7606358609394992683, guid: ff77327ce03ce554c9f99b7af679303b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -580,11 +584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167487927740586535, guid: 9e29d8ad090bfd5459f3301aab246c46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 392
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7167487927740586535, guid: 9e29d8ad090bfd5459f3301aab246c46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 276.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7167487927740586535, guid: 9e29d8ad090bfd5459f3301aab246c46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -698,6 +702,10 @@ PrefabInstance:
     - target: {fileID: 6748701536651161610, guid: aa857cc2ca7d4fa489580883f3d82478, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748701536766726165, guid: aa857cc2ca7d4fa489580883f3d82478, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa857cc2ca7d4fa489580883f3d82478, type: 3}
@@ -856,6 +864,10 @@ PrefabInstance:
     - target: {fileID: 8693246515226815478, guid: bebaffdc9025a1946995032e7af19875, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693246515226815478, guid: bebaffdc9025a1946995032e7af19875, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8693246515933550135, guid: bebaffdc9025a1946995032e7af19875, type: 3}
       propertyPath: m_AnchoredPosition.x

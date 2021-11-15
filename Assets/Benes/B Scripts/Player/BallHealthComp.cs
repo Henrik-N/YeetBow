@@ -37,7 +37,7 @@ public class BallHealthComp : MonoBehaviour
         if (currentHealth <= 0)
         {
             rend.color = Color.black;
-            Debug.Log("lmao dead");
+            GameLoop.Instance.GameOver();
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,15 +22,12 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
+    public GameObject player;
     public AudioClip Music;
-
-    [Range(0.1f, 1f)] public float screenShakeTime;
-    
-    
     
     private void Awake()
     {
-        SoundManager.Instance.PlayMusic(Music);
-        CameraShake.Instance.setShakeDuration = screenShakeTime;
+        if (Music != null)
+            SoundManager.Instance.PlayMusic(Music);
     }
 }

@@ -4,7 +4,7 @@ public class CameraShake : MonoBehaviour
 {
     private Transform transform;
 
-    private float shakeDuration = 0f;
+    private float shakeboi = 0f;
 
     [SerializeField, Range(0.01f, 0.5f)] private float shakeMagnitude = 0.3f;
 
@@ -12,25 +12,13 @@ public class CameraShake : MonoBehaviour
 
     private Vector3 initialPosition;
 
-    [Range(.1f,1f)] public float setShakeDuration = 1f;
-
-    #region SingleTon
-    private static CameraShake instance;
-
-    public static CameraShake Instance
-    {
-        get => instance;
-    }
+    [Range(.1f,1f)] public float shakeDuration = 1f;
 
     private void OnEnable()
     {
-        if (instance == null)
-            instance = this;
-
         initialPosition = transform.localPosition;
     }
-    #endregion
-
+    
     private void Awake()
     {
         if (transform == null)
@@ -41,21 +29,21 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
-        if (shakeDuration > 0)
+        if (shakeboi > 0)
         {
             transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
 
-            shakeDuration -= Time.deltaTime * dampingSpeed;
+            shakeboi -= Time.deltaTime * dampingSpeed;
         }
         else
         {
-            shakeDuration = 0f;
+            shakeboi = 0f;
             transform.localPosition = initialPosition;
         }
     }
     
     public void TriggerShake() 
     {
-      shakeDuration = setShakeDuration;
+        shakeboi = shakeDuration;
     }
 }

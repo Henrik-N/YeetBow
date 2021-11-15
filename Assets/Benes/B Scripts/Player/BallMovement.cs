@@ -12,6 +12,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField, Range(0f, 100f)] private float speed = 10f;
 
     private Rigidbody2D body;
+
+    public Rigidbody2D Body => body;
     private Camera cam;
 
     private Vector2 dragDir;
@@ -56,6 +58,8 @@ public class BallMovement : MonoBehaviour
 
         body.AddForce(dragDir * force, ForceMode2D.Impulse);
         startPoint = Vector2.zero;
+        GameLoop.Instance.MaxMoves--; 
+        Debug.Log(GameLoop.Instance.MaxMoves);
     }
 
     private void OnDrawGizmos()
