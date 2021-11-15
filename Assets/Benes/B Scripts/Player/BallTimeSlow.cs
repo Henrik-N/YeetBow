@@ -13,16 +13,19 @@ public class BallTimeSlow : MonoBehaviour
     private float timeYouCanSlowMax;
     [SerializeField, Range(0.1f, 1f)] private float minSlowmotionSpeed = 0.3f;
 
+    #region UI grejer
+    
+    public Image timebar; //UI timebar
 
-    public Image timebar;
-
+    //För ui buttom    
     private bool isPointerDown;
-
     public bool IsPointerDown
     {
         get => isPointerDown;
         set => isPointerDown = value;
     }
+    
+    #endregion
 
     
     private WaitForSeconds delay; // för mjölkning/ko rutiner
@@ -87,7 +90,6 @@ public class BallTimeSlow : MonoBehaviour
         while (Time.timeScale < 1)
         {
             Time.timeScale += Time.deltaTime;
-            timeYouCanSlow += Time.deltaTime;
         }
 
         timeIsSlowed = false;
@@ -100,7 +102,6 @@ public class BallTimeSlow : MonoBehaviour
         while (Time.timeScale > minSlowmotionSpeed)
         {
             Time.timeScale -= Time.deltaTime;
-            timeYouCanSlow -= Time.deltaTime;
         }
 
         timeIsSlowed = true;

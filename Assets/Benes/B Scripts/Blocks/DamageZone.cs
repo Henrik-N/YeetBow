@@ -9,6 +9,8 @@ public class DamageZone : MonoBehaviour
     [SerializeField, Tooltip("Dmg lmao"), Range(1f, 30f)]
     private int damage = 10;
 
+    [SerializeField] private AudioClip clip;
+
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
@@ -22,6 +24,7 @@ public class DamageZone : MonoBehaviour
         {
             other.gameObject.GetComponent<BallHealthComp>().TakeDamage(damage);
             other.gameObject.GetComponentInChildren<CameraShake>().TriggerShake();
+            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
         }
     }
 }

@@ -58,8 +58,6 @@ public class BallMovement : MonoBehaviour
         startPoint = Vector2.zero;
     }
 
-
-
     private void OnDrawGizmos()
     {
         if (cam != null && startPoint != Vector2.zero)
