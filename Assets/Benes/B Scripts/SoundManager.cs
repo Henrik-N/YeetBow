@@ -143,7 +143,7 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     /// <param name="location"></param>
     /// <param name="clip"></param>
-    IEnumerator PlayAtLocation(Vector3 location, AudioClip clip) //todo fix pool for this
+    IEnumerator PlayAtLocation(Vector3 location, AudioClip clip) 
     {
         GameObject obj = Instantiate(prefab, location, Quaternion.identity);
         //obj = Instantiate(obj, location, Quaternion.identity);

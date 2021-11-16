@@ -15,7 +15,7 @@ public class MovingDamageZone : MonoBehaviour
 
     [SerializeField] private AudioClip clip;
 
-    [SerializeField] private float MoveLength = 10f;
+    [SerializeField] private float moveLength = 10f;
     [SerializeField] private float moveSpeed = 10f;
 
     public enum MoveDir
@@ -25,44 +25,46 @@ public class MovingDamageZone : MonoBehaviour
         Left,
         Right
     }
+
     public MoveDir dir = default;
 
     private Vector2 startPos;
     private Vector2 vel = default;
     private Vector2 endPos;
-    
+
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
         if (!box.isTrigger)
             box.isTrigger = true;
-        
+
+        startPos = transform.position;
+        vel = WhichDir();
+        endPos = startPos + vel * moveLength;
     }
 
-    
 
     private void OnValidate()
     {
         startPos = transform.position;
         vel = WhichDir();
-        endPos = startPos + vel * MoveLength; 
+        endPos = startPos + vel * moveLength;
         Debug.Log("vel is " + vel);
     }
 
     private void Update()
     {
-        if (MovedToFar()) //Todo fixa så det här funkar
+        if (MovedToFar()) 
         {
             vel *= -1;
         }
-        transform.position += (Vector3) vel * moveSpeed * Time.deltaTime;
-        Debug.Log("vel is " + vel);
 
+        transform.position += (Vector3) vel * moveSpeed * Time.deltaTime;
     }
 
     private bool MovedToFar()
     {
-        if (transform.position.magnitude > endPos.magnitude)
+        if (Vector2.Distance(transform.position, endPos) > Vector2.Distance(startPos, endPos))
         {
             return true;
         }
@@ -81,7 +83,7 @@ public class MovingDamageZone : MonoBehaviour
                 vel = Vector2.up;
                 return vel;
             case MoveDir.Left:
-                vel = Vector2.left;
+                vel = -Vector2.right;
                 return vel;
             case MoveDir.Right:
                 vel = Vector2.right;
@@ -97,17 +99,20 @@ public class MovingDamageZone : MonoBehaviour
         {
             other.gameObject.GetComponent<BallHealthComp>().TakeDamage(damage);
             other.gameObject.GetComponentInChildren<CameraShake>().TriggerShake();
-            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
+            if (clip != null)
+                SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
         }
     }
 
     private void OnDrawGizmos()
     {
+        Handles.color = Color.black;
+        Handles.DrawSolidDisc(startPos, Vector3.forward, .1f);
         Handles.color = Color.blue;
-        Handles.DrawLine(startPos, startPos + (vel * MoveLength), 5f);
-        Handles.DrawLine(startPos, startPos - (vel * MoveLength), 5f);
+        Handles.DrawLine(transform.position, (Vector2)transform.position + (vel * moveLength) * 2, 5f);
         Handles.color = Color.red;
-        Handles.DrawSolidDisc(startPos + vel * MoveLength, Vector3.forward, .1f);
-        Handles.DrawSolidDisc(startPos - vel * MoveLength, Vector3.forward, .1f);
+        Handles.DrawSolidDisc(startPos + vel * moveLength * 2, Vector3.forward, .1f);
+        
     }
+    
 }

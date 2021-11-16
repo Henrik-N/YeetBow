@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,6 +6,8 @@ public class BouncyZone : MonoBehaviour
 {
     private BoxCollider2D box;
     [SerializeField, Tooltip("Hur hårt man blir slängd"), Range(1f, 30f)] private float speed = 10f;
+
+    [SerializeField] private AudioClip clip;
 
     private void Start()
     {
@@ -22,6 +21,9 @@ public class BouncyZone : MonoBehaviour
         Rigidbody2D bod = other.attachedRigidbody;
         if (bod)
             AccelerateBod(bod);
+        
+        if (clip != null)
+            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
     }
 
     private void OnTriggerStay2D(Collider2D other)

@@ -66,9 +66,9 @@ public class BallTimeSlow : MonoBehaviour
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         
-         if (Input.GetButtonDown("Jump")) //Todo add UI för detta för mobile
+         if (Input.GetButtonDown("Jump")) 
         {
-            if (!timeIsSlowed) // && slowCharges > 0) 
+            if (!timeIsSlowed)
             {
                 StartCoroutine(SlowTime());
             }

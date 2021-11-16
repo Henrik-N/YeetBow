@@ -11,6 +11,8 @@ public class AccelerationZone : MonoBehaviour
     private BoxCollider2D box;
     [SerializeField, Range(-30f, 30f)] private float speed = 10f;
 
+    [SerializeField] private AudioClip clip;
+
 
     private void Start()
     {
@@ -24,6 +26,9 @@ public class AccelerationZone : MonoBehaviour
         Rigidbody2D bod = other.attachedRigidbody;
         if (bod)
             AccelerateBod(bod);
+        
+        if (clip != null)
+            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
     }
     private void OnTriggerStay2D(Collider2D other)
     {

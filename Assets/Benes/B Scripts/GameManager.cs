@@ -23,11 +23,11 @@ public class GameManager : MonoBehaviour
 
 
     public GameObject player;
-    public AudioClip Music;
+    public AudioClip music;
     
     private void Awake()
     {
-        if (Music != null)
-            SoundManager.Instance.PlayMusic(Music);
+        if (music != null)
+            SoundManager.Instance.PlayMusic(music);
     }
 }

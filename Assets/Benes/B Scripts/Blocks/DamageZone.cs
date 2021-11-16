@@ -24,7 +24,8 @@ public class DamageZone : MonoBehaviour
         {
             other.gameObject.GetComponent<BallHealthComp>().TakeDamage(damage);
             other.gameObject.GetComponentInChildren<CameraShake>().TriggerShake();
-            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
+            if (clip != null)
+                SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
         }
     }
 }

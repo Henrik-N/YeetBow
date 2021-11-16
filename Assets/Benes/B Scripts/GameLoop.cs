@@ -47,7 +47,7 @@ public class GameLoop : MonoBehaviour
 
     public void GameOver()
     {
-        GameManager.Instance.player.transform.position = startCheckpoint.transform.position;
+        GameManager.Instance.player.transform.position = startCheckpoint.transform.position; //Todo flytta till senaste checkpointen
         GameManager.Instance.player.GetComponent<BallMovement>().Body.velocity = Vector2.zero;
         maxMoves = maxMovesStart;
     }

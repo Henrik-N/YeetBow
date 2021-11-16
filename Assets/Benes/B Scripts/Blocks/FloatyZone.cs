@@ -15,6 +15,8 @@ public class FloatyZone : MonoBehaviour
     [SerializeField, Tooltip("Hur snabbt man åker, minst 10 cuz gravity"), Range(10f, 100f)]
     private float acceleration = 10f;
 
+    [SerializeField] private AudioClip clip;
+
     private void Start()
     {
         box = GetComponent<BoxCollider2D>();
@@ -27,6 +29,9 @@ public class FloatyZone : MonoBehaviour
         Rigidbody2D bod = other.attachedRigidbody;
         if (bod)
             Acceleration(bod);
+        
+        if (clip != null)
+            SoundManager.Instance.PlaySoundAtLocation(transform.position, clip);
     }
 
     private void OnTriggerStay2D(Collider2D other)
